@@ -2,13 +2,13 @@
 (function() {
 
   $.fn.progressBar = function(progress) {
-    var bar, isSetup, label, options, replaceProgressBarColor, setup,
+    var bar, isSetup, label, options, replaceProgressBarColor, setLabelPosition, setup,
       _this = this;
     isSetup = function() {
       return _this.data('pb-setup') === true;
     };
     setup = function() {
-      _this.html("<div class='pb-container'>              <div class='pb-progress-bar'>                <div class='pb-progress pb-transition' style='width:0%;display:none;'>                  <div class='pb-label' style='display:none;'>                  </div>                </div>              </div>            </div>");
+      _this.html("<div class='pb-container'>              <div class='pb-progress-bar'>                <div class='pb-progress pb-transition' style='width:0%;display:none;'>                  <div class='pb-label'>                  </div>                </div>              </div>            </div>");
       return _this.data('pb-setup', true);
     };
     if (!isSetup()) {
@@ -33,14 +33,30 @@
       }
       return bar.addClass("pb-color-" + newColor);
     };
+    setLabelPosition = function(bar) {
+      var barWidth, labelPadding, labelWidth;
+      labelPadding = parseInt($(label).css('padding-right'));
+      labelWidth = (parseInt($(label).css('width'))) + (2 * labelPadding);
+      barWidth = parseInt($(bar).css('width'));
+      if (labelWidth > barWidth) {
+        return label.css('margin-right', -1 * labelWidth);
+      } else {
+        return label.animate({
+          'margin-right': 0
+        }, 1500, 'swing');
+      }
+    };
     return $('.pb-progress', this).animate({
       width: "" + progress + "%"
     }, {
-      duration: 2000,
+      duration: 8000,
       easing: 'swing',
       step: function(progress) {
         var color;
+        this.style.overflow = 'visible';
         progress = Math.ceil(progress);
+        label.text("" + progress + "%");
+        setLabelPosition(this);
         if (bar.css('width') !== '0px') {
           if (bar.is(":hidden")) {
             bar.show();
@@ -48,17 +64,7 @@
         }
         color = options[progress];
         if (color != null) {
-          replaceProgressBarColor(color);
-        }
-        label.text("" + progress + "%");
-        if (progress < 10) {
-          if (label.is(":visible")) {
-            return label.fadeOut();
-          }
-        } else {
-          if (label.is(":hidden")) {
-            return label.fadeIn();
-          }
+          return replaceProgressBarColor(color);
         }
       }
     });
