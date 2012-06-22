@@ -15,24 +15,20 @@ $.fn.progressBar = (progress) ->
 
   setup() unless isSetup()
 
-  options =
-    0:  () ->
-      removeColorClasses(bar).addClass('pb-color-red')
-    20: () ->
-      removeColorClasses(bar).addClass('pb-color-yellow')
-    50: () ->
-      removeColorClasses(bar).addClass('pb-color-blue')
-    80: () ->
-      removeColorClasses(bar).addClass('pb-color-green')
+  bar   = $('.pb-progress', @)
+  label = $('.pb-label', @)
 
-  removeColorClasses = (bar) ->
+  options =
+    0:  'red'
+    20: 'yellow'
+    50: 'blue'
+    80: 'green'
+
+  replaceProgressBarColor = (newColor) ->
     for cssClass in bar.attr('class').split(' ')
       if /^pb-color.*$/.test(cssClass)
         bar.removeClass(cssClass)
-    bar
-
-  bar   = $('.pb-progress', @)
-  label = $('.pb-label', @)
+    bar.addClass("pb-color-#{newColor}")
 
   $('.pb-progress', @).animate width: "#{ progress }%",
     duration: 2000
@@ -43,8 +39,8 @@ $.fn.progressBar = (progress) ->
       if bar.css('width') != '0px'
         bar.show() if bar.is(":hidden")
 
-      transition = options[progress]
-      transition() if transition?
+      color = options[progress]
+      replaceProgressBarColor(color) if color?
 
       label.text "#{progress}%"
 
