@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="progressbar.js"></script>
+    <link rel="stylesheet" href="progressbar.css" type="text/css">
+
+    <script>
+      $(document).ready(function(){
+
+        $('.progressBar').each(function(){
+          $(this).progressBar( parseInt( $(this).data('progress') ) );
+        });
+
+      });
+    </script>
+    <style>
+      .progressBar { margin-top:10px }
+    </style>
+
+  </head>
+  <body>
+    <div class='progressBar' data-progress='10'> </div>
+    <div class='progressBar' data-progress='0'> </div>
+    <div class='progressBar' data-progress='12'> </div>
+    <div class='progressBar' data-progress='30'> </div>
+    <div class='progressBar' data-progress='45'> </div>
+    <div class='progressBar' data-progress='98'> </div>
+    <div class='progressBar' data-progress='100'> </div>
+    <div class='progressBar' data-progress='56'> </div>
+  </body>
+</html>
+

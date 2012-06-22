@@ -1,0 +1,110 @@
+/* Webkit animation keyframes */
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 44px 0;
+  }
+}
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 36px 0;
+  }
+}
+.pb-container .pb-progress-bar {
+  background-color: #abb2bc;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #949daa), color-stop(100%, #abb2bc));
+  background: -webkit-linear-gradient(#949daa 0%, #abb2bc 100%);
+  background: -moz-linear-gradient(#949daa 0%, #abb2bc 100%);
+  background: -o-linear-gradient(#949daa 0%, #abb2bc 100%);
+  background: -ms-linear-gradient(#949daa 0%, #abb2bc 100%);
+  background: linear-gradient(#949daa 0%, #abb2bc 100%);
+  border-radius: 20px;
+  box-shadow: inset 0px 1px 2px 0px rgba(0,0,0,0.5), 0px 1px 0px 0px #fff;
+  height: 20px;
+  padding-right: 2px;
+  position: relative;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  -moz-box-shadow: inset 0px 1px 2px 0px rgba(0,0,0,0.5), 0px 1px 0px 0px #fff;
+  -webkit-box-shadow: inset 0px 1px 2px 0px rgba(0,0,0,0.5), 0px 1px 0px 0px #fff;
+  -o-box-shadow: inset 0px 1px 2px 0px rgba(0,0,0,0.5), 0px 1px 0px 0px #fff;
+}
+.pb-container .pb-progress-bar .pb-label {
+  color: rgba(0,0,0,0.6);
+  display: inline;
+  font-size: 14px;
+  font-smoothing: antialiased;
+  font-weight: bold;
+  line-height: 14px;
+  padding-right: 12px;
+  padding-top: 2px;
+  position: absolute;
+  right: 0;
+  text-shadow: rgba(255,255,255,0.45) 0 1px 0px;
+  white-space: nowrap;
+  -khtml-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+}
+.pb-container .pb-progress-bar .pb-progress {
+  animation: animate-stripes 2s linear infinite;
+  background-color: #74d04c;
+  background: -webkit-gradient(linear, 0 0, 44 44, color-stop(0, rgba(255,255,255,0.17)), color-stop(0.25, rgba(255,255,255,0.17)), color-stop(0.26, rgba(255,255,255,0)), color-stop(0.5, rgba(255,255,255,0)), color-stop(0.51, rgba(255,255,255,0.17)), color-stop(0.75, rgba(255,255,255,0.17)), color-stop(0.76, rgba(255,255,255,0)), color-stop(1, rgba(255,255,255,0))), -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(255,255,255,0)), color-stop(1, rgba(255,255,255,0.35))), #74d04c;
+  background: -moz-repeating-linear-gradient(top left -30deg, rgba(255,255,255,0.17), rgba(255,255,255,0.17) 15px, rgba(255,255,255,0) 15px, rgba(255,255,255,0) 30px), -moz-linear-gradient(rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 100%), #74d04c;
+  border-radius: 20px;
+  box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,0.4), inset 0px -1px 1px rgba(0,0,0,0.2);
+  border: 1px solid #4c8932;
+  display: block;
+  height: 18px;
+  position: relative;
+  overflow: hidden;
+  -moz-border-radius: 20px;
+  -moz-background-size: 36px 36px;
+  -moz-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,0.4), inset 0px -1px 1px rgba(0,0,0,0.2);
+  -moz-animation: animate-stripes 2s linear infinite;
+  -ms-animation: animate-stripes 2s linear infinite;
+  -ms-border-radius: 20px;
+  -khtml-animation: animate-stripes 2s linear infinite;
+  -khtml-border-radius: 20px;
+  -o-animation: animate-stripes 2s linear infinite;
+  -o-border-radius: 20px;
+  -o-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,0.4), inset 0px -1px 1px rgba(0,0,0,0.2);
+  -webkit-animation: animate-stripes 2s linear infinite;
+  -webkit-background-size: 44px 44px;
+  -webkit-border-radius: 20px;
+  -webkit-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,0.4), inset 0px -1px 1px rgba(0,0,0,0.2);
+}
+.pb-container .pb-progress-bar .pb-progress.pb-color-green {
+  background-color: #57a957 !important;
+  border: 1px solid #458845;
+}
+.pb-container .pb-progress-bar .pb-progress.pb-color-blue {
+  background-color: #339bb9 !important;
+  border: 1px solid #287a91;
+}
+.pb-container .pb-progress-bar .pb-progress.pb-color-red {
+  background-color: #c43c35 !important;
+  border: 1px solid #9c302a;
+}
+.pb-container .pb-progress-bar .pb-progress.pb-color-yellow {
+  background-color: #d9b31a !important;
+  border: 1px solid #ab8d15;
+}
+.pb-container .pb-progress-bar .pb-progress.pb-transition {
+  transition: background-color 0.5s ease-in, border-color 1.5s ease-out, box-shadow 1.5s ease-out;
+  -moz-transition: background-color 0.5s ease-in, border-color 1.5s ease-out, box-shadow 1.5s ease-out;
+  -o-transition: background-color 0.5s ease-in, border-color 1.5s ease-out, box-shadow 1.5s ease-out;
+  -webkit-transition: background-color 0.5s ease-in, border-color 1.5s ease-out, box-shadow 1.5s ease-out;
+}
