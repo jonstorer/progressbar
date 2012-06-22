@@ -2,7 +2,7 @@
 (function() {
 
   $.fn.progressBar = function(progress) {
-    var bar, isSetup, label, options, removeColorClasses, setup,
+    var bar, isSetup, label, options, replaceProgressBarColor, setup,
       _this = this;
     isSetup = function() {
       return _this.data('pb-setup') === true;
@@ -14,21 +14,15 @@
     if (!isSetup()) {
       setup();
     }
+    bar = $('.pb-progress', this);
+    label = $('.pb-label', this);
     options = {
-      0: function() {
-        return removeColorClasses(bar).addClass('pb-color-red');
-      },
-      20: function() {
-        return removeColorClasses(bar).addClass('pb-color-yellow');
-      },
-      50: function() {
-        return removeColorClasses(bar).addClass('pb-color-blue');
-      },
-      80: function() {
-        return removeColorClasses(bar).addClass('pb-color-green');
-      }
+      0: 'red',
+      20: 'yellow',
+      50: 'blue',
+      80: 'green'
     };
-    removeColorClasses = function(bar) {
+    replaceProgressBarColor = function(newColor) {
       var cssClass, _i, _len, _ref;
       _ref = bar.attr('class').split(' ');
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -37,26 +31,24 @@
           bar.removeClass(cssClass);
         }
       }
-      return bar;
+      return bar.addClass("pb-color-" + newColor);
     };
-    bar = $('.pb-progress', this);
-    label = $('.pb-label', this);
     return $('.pb-progress', this).animate({
       width: "" + progress + "%"
     }, {
       duration: 2000,
       easing: 'swing',
       step: function(progress) {
-        var transition;
+        var color;
         progress = Math.ceil(progress);
         if (bar.css('width') !== '0px') {
           if (bar.is(":hidden")) {
             bar.show();
           }
         }
-        transition = options[progress];
-        if (transition != null) {
-          transition();
+        color = options[progress];
+        if (color != null) {
+          replaceProgressBarColor(color);
         }
         label.text("" + progress + "%");
         if (progress < 10) {
