@@ -5,10 +5,9 @@ $.fn.progressBar = (progress) ->
   setup = =>
     @.html "<div class='pb-container'>
               <div class='pb-progress-bar'>
-                <div class='pb-progress pb-transition' style='width:0%;display:none;'>
-                  <div class='pb-label'>
-                  </div>
-                </div>
+                <div class='pb-progress pb-transition' style='width:0%;display:none;float:left;'> </div>
+                <div class='pb-label' style='float:left;'> </div>
+                <div style='clear:both;'> </div>
               </div>
             </div>"
     @.data('pb-setup', true)
@@ -32,15 +31,11 @@ $.fn.progressBar = (progress) ->
 
   setLabelPosition = (bar) ->
 
-    labelPadding = parseInt $(label).css('padding-right')
+    labelPadding = parseInt $(label).css('padding-left')
+    labelWidth   = parseInt $(label).css('width')
+    barWidth     = parseInt $(bar).css('width')
 
-    labelWidth = ( parseInt $(label).css('width') ) + ( 2 * labelPadding )
-    barWidth   = parseInt $(bar).css('width')
-
-    if labelWidth > barWidth
-      label.css('margin-right', -1 * labelWidth )
-    else
-      label.animate('margin-right': 0, 1500, 'swing')
+    label.css('margin-left', Math.max(0, barWidth - labelWidth - 2 * labelPadding ))
 
   $('.pb-progress', @).animate width: "#{ progress }%",
     duration: 8000

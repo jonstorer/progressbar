@@ -8,7 +8,7 @@
       return _this.data('pb-setup') === true;
     };
     setup = function() {
-      _this.html("<div class='pb-container'>              <div class='pb-progress-bar'>                <div class='pb-progress pb-transition' style='width:0%;display:none;'>                  <div class='pb-label'>                  </div>                </div>              </div>            </div>");
+      _this.html("<div class='pb-container'>              <div class='pb-progress-bar'>                <div class='pb-progress pb-transition' style='width:0%;display:none;float:left;'> </div>                <div class='pb-label' style='float:left;'> </div>                <div style='clear:both;'> </div>              </div>            </div>");
       return _this.data('pb-setup', true);
     };
     if (!isSetup()) {
@@ -35,16 +35,10 @@
     };
     setLabelPosition = function(bar) {
       var barWidth, labelPadding, labelWidth;
-      labelPadding = parseInt($(label).css('padding-right'));
-      labelWidth = (parseInt($(label).css('width'))) + (2 * labelPadding);
+      labelPadding = parseInt($(label).css('padding-left'));
+      labelWidth = parseInt($(label).css('width'));
       barWidth = parseInt($(bar).css('width'));
-      if (labelWidth > barWidth) {
-        return label.css('margin-right', -1 * labelWidth);
-      } else {
-        return label.animate({
-          'margin-right': 0
-        }, 1500, 'swing');
-      }
+      return label.css('margin-left', Math.max(0, barWidth - labelWidth - 2 * labelPadding));
     };
     return $('.pb-progress', this).animate({
       width: "" + progress + "%"
