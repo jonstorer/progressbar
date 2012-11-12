@@ -49,6 +49,9 @@ $.fn.progressBar = (progress) ->
 
       setLabelPosition(@)
 
+      if bar.css('width') == '0px'
+        bar.hide() if !bar.is(":hidden")
+
       if bar.css('width') != '0px'
         bar.show() if bar.is(":hidden")
 

@@ -51,6 +51,11 @@
         progress = Math.ceil(progress);
         label.text("" + progress + "%");
         setLabelPosition(this);
+        if (bar.css('width') === '0px') {
+          if (!bar.is(":hidden")) {
+            bar.hide();
+          }
+        }
         if (bar.css('width') !== '0px') {
           if (bar.is(":hidden")) {
             bar.show();
