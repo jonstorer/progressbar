@@ -11,6 +11,19 @@
           $(this).progressBar( parseInt( $(this).data('progress') ) );
         });
 
+
+        setTimeout(function(){
+          $('.progressBar').each(function(){
+            $(this).progressBar(parseInt(Math.random() * 100))
+          });
+        }, 3000);
+
+        setTimeout(function(){
+          $('.progressBar').each(function(){
+            $(this).progressBar(0)
+          });
+        }, 6000);
+
       });
     </script>
     <style>
